@@ -6,6 +6,8 @@ const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const movieRoute = require("./routes/movies");
 const listRoute = require("./routes/lists");
+const cors = require('cors')
+
 
 dotenv.config();
 
@@ -20,6 +22,10 @@ mongoose
     console.error(err);
   });
 
+app.use(cors({
+  origin: "https://brilliant-lolly-b0bc78.netlify.app",
+  credentials: true
+}))
 app.use(express.json());
 
 app.use("/api/auth", authRoute);
